@@ -1,66 +1,65 @@
 FORMAT: 1A
 HOST: http://apics.oracle.com:8001/apiEnergy
 
-# apiEnergy - Energy Consumption API
+# Energy
 
-API to get details on the energy consumption made by a customer
+Gives a real time current month's usage of Gas and Electricity Services. Also gives an estimate of the next billing cycle's usage.
 
-## Current month usage [/usage/current/month/{account_number}]
+
+
+## Usage [/usage/current/month/{accountNumber}]
+
+### Current Month [GET]
+Returns current month's usage information for the provided customer id.
+
 + Parameters
-    + account_number : 4859634 (number) - Customer's account number
+    + accountNumber: 4859634 (number) - Customer's account number.
+    
++ Request
 
-### Gets current month usage [GET]
-Returns the user usage of energy for the **CURRENT** month.
+    + Headers
+    
+            tenant-id: 1 (number) - Customer's tenant-id
+            api-key: b1fc5825-b310-4e84-aaec-9c88c73bc81f (number) 
 
 + Response 200 (application/json)
 
-        {
-            "account_number": "12345",
-            "name": "John",
-            "gas_usage": "1 Btu",
-            "gas_cost": "$ 1",
-            "electricity_usage": "1 kW",
-            "electricity_cost": "$ 1",
-            "environment": "US 1",
-            "serviceID": "12345"
-        }
         
-## Last month usage [/usage/last/month/{account_number}]
-+ Parameters
-    + account_number : 4859634 (number) - Customer's account number
-
-### Gets last month usage [GET]
-Returns the user usage of energy for the **LAST** month.
-
-+ Response 200 (application/json)
-
         {
-            "account_number": "12345",
-            "name": "John",
-            "gas_usage": "1 Btu",
-            "gas_cost": "$ 1",
-            "electricity_usage": "1 kW",
-            "electricity_cost": "$ 1",
-            "environment": "US 1",
-            "serviceID": "1234"
+            "account_number": "4859634",
+            "name": "Darko",
+            "gas_usage": "20,006 Btu",
+            "gas_cost": "¥ 46,896",
+            "electricity_usage": "3,430 kW",
+            "electricity_cost": "¥ 12,932",
+            "environment": "Japan 1",
+            "serviceID": "7777"
         }
 
-## Estimate usage [/estimate/{account_number}]
-+ Parameters
-    + account_number : 4859634 (number) - Customer's account number
+## Estimate [/estimate/{accountNumber}]
 
-### Calculates the estimate of usage [GET]
-Returns an estimate for customer's energy usage.
+### Estimate [GET]
+Returns an estimate of next month's usage information for the provided customer account number.
+
++ Parameters
+    + accountNumber: 4859634 (number) - Customer's account number.
+
++ Request
+
+    + Headers
+    
+            tenant-id: 1 (number) - Customer's tenant-id
+            api-key: b1fc5825-b310-4e84-aaec-9c88c73bc81f (number) 
 
 + Response 200 (application/json)
 
         {
-          "account_number": "12345",
-          "name": "John Smith",
-          "gas_estimate_usage": "1 Btu",
-          "gas_estimate_cost": "$ 1.00",
-          "electricity_estimate_usage": "1 kW",
-          "electricity_estimate_cost": "$ 1.00",
-          "environment": "US 1",
-          "serviceID": "7777"
+            "account_number": "4859634",
+            "name": "Darko",
+            "gas_estimate_usage": "32,000 Btu",
+            "gas_estimate_cost": "¥ 46,896",
+            "electricity_estimate_usage": "3,430 kW",
+            "electricity_estimate_cost": "¥ 12,932",
+            "environment": "Japan 1",
+            "serviceID": "7777"
         }
