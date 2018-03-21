@@ -1,11 +1,13 @@
 FORMAT: 1A
 HOST: http://private-23a414-tolysenergy.apiary-mock.com
+
 # Energy
 
 Gives a real time current month's usage of Gas and Electricity Services. Also gives an estimate of the next billing cycle's usage.
 This was published used the CLI Apiary command apiary publish --api-name=tolysenergy --path="/home/oracle/Apiary/cli_tolysenergy.apib"
-
-
+<!-- HOST: http://private-23a414-tolysenergy.apiary-mock.com -->
+<!-- HOST: http://oc-129-144-149-144.compute.oraclecloud.com:7001/tolyEnergy - DEV  -->
+<!-- HOST: http://oc-129-144-152-17.compute.oraclecloud.com:7001/tolyEnergy - PROD -->
 
 ## Usage [/usage/current/month/{accountNumber}]
 
@@ -20,20 +22,20 @@ Returns current month's usage information for the provided customer id.
     + Headers
     
             tenant-id: 1 (number) - Customer's tenant-id
-            api-key: b1fc5825-b310-4e84-aaec-9c88c73bc81f (number) 
+            api-key: 770d80e6-f580-4ae8-bea7-31d4cda37626 (number) 
 
 + Response 200 (application/json)
 
         
         {
             "account_number": "4859634",
-            "name": "Darko",
-            "gas_usage": "20,006 Btu",
-            "gas_cost": "¥ 46,896",
-            "electricity_usage": "3,430 kW",
-            "electricity_cost": "¥ 12,932",
-            "environment": "Japan 1",
-            "serviceID": "7777"
+            "name": "George",
+            "gas_usage": "10,006 Btu",
+            "gas_cost": "$ 36,896",
+            "electricity_usage": "2,430 kW",
+            "electricity_cost": "$ 22,932",
+            "environment": "Canada Alberta",
+            "serviceID": "8888"
         }
 
 ## Estimate [/estimate/{accountNumber}]
@@ -55,11 +57,11 @@ Returns an estimate of next month's usage information for the provided customer 
 
         {
             "account_number": "4859634",
-            "name": "Darko",
-            "gas_estimate_usage": "32,000 Btu",
-            "gas_estimate_cost": "¥ 46,896",
-            "electricity_estimate_usage": "3,430 kW",
-            "electricity_estimate_cost": "¥ 12,932",
-            "environment": "Japan 1",
+            "name": "Toly",
+            "gas_estimate_usage": "22,000 Btu",
+            "gas_estimate_cost": "$ 36,896",
+            "electricity_estimate_usage": "2,430 kW",
+            "electricity_estimate_cost": "$ 22,932",
+            "environment": "Canada Alberta",
             "serviceID": "7777"
         }
